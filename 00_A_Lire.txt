@@ -1,0 +1,23 @@
+Macro qui permet de dupliquer une plage de n Colonnes.
+
+Ces n colonnes sont définies en dure dans le code. En revanche, les lignes qui composent ces colonnes ne le sont pas.
+Le "haut" des lignes est définit dans le code. En revanche, le "bas" est définit à l'aide de la balise /*vide*\.
+Cette balise doit donc être présente en bas de chaque colonne et en fin de chaque ligne du tableau.
+
+remarque : 	cette méthode est plus lourde que Selection. etc...(par exemple, le code généré par l'enregistreur de macro).
+		Mais la méthode Selection dépend de l'objet Application qui génère des erreurs.
+
+Algorithme et principe de base: 
+	1 - On définit la Range qui va servir de Template pour les colonnes à Dupliquer
+		a - le haut des colonnes est indiquer dans le code.
+		b - le bas du tableau est trouvé à l'aide de la fonction FIND paramétrée pour la balise /*vide*\
+		c - la fonction FIND renvoi le Range du bas du tableau. On construit alors le Range du template à partir de cela.
+		d - On copie cette range.
+	2 - On recherche le point d'insertion pour ajouter les colonnes voulues.
+		a - on procède à la recherche de la "dernière" colonne à l'aide de la fonction FIND paramétrée pour la balise /*vide*\ comme précédemment (à quelques différences)
+		b - on se place à ce point d'insertion et on utilise la fonction INSERT pour ajouter les colonnes.
+	3 - Afin de "libérer" la sélection, on vient sélectionner le point d'insertion et on utilise la fonction SENDKEYS.
+	4 - Cette même astuce, permet également de récupérer le Focus sur ce point d'insertion (bien pratique pour l'aspect visuel). Ceci afin de déplacer directement le fichier Excel sur la zone de travail voulue.
+	5 - On rempli la case "Week" par le numéro de semaine, à l'aide d'un fonction générique de récupération du n° de semaine à partir de la date courante.
+
+remarque :	le fichier contient un second morceau de code dans l'object Workbook-->Open, afin d'avoir le focus directement sur la zone de travail voulue.
