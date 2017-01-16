@@ -21,3 +21,9 @@ Algorithme et principe de base:
 	5 - On rempli la case "Week" par le numéro de semaine, à l'aide d'un fonction générique de récupération du n° de semaine à partir de la date courante.
 
 remarque :	le fichier contient un second morceau de code dans l'object Workbook-->Open, afin d'avoir le focus directement sur la zone de travail voulue.
+
+
+VERSIONS : 
+	V01 :	création du code
+	V02 : 	Ajout d'une fonction préliminaire au code qui permet de désactiver les filtres existants (sans les supprimer) et corriger le bug de plantage du fichier lors de la présence de données filtrées.
+		En effet, la présence de données filtrées engendre un plantage du reste du code
